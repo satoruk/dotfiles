@@ -2,13 +2,30 @@
 
 basedir=$(cd $(dirname $0);pwd)
 
-
 #echo $basedir
 
+mkSLink () {
+  local src dest cancel
+  cancel=false
+  src=$1
+  dest=$2
+  if [ -e $dest ]; then
+    read -p "$dest already exist. Overwite? [y/n]:" ans
+    case $ans in
+      [Yy]* ) break;;
+      * ) cancel=true;;
+    esac
+  fi
 
-ln -s "$basedir/gitignore" ~/.gitignore
-ln -s "$basedir/vimrc" ~/.vimrc
+  if [ !$cancel ]; then
+    ln -s -f $src $dest
+    echo "$dest ... ok"
+  fi
+}
 
+
+mkSLink "$basedir/gitignore" ~/.gitignore
+mkSLink "$basedir/vimrc" ~/.vimrc
 
 
 
