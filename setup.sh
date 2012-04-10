@@ -17,7 +17,8 @@ mkSLink () {
     esac
   fi
 
-  if [ !$cancel ]; then
+  if ! $cancel; then
+    rm -rf $dest
     ln -s -f $src $dest
     echo "$dest ... ok"
   fi
