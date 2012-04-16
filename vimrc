@@ -9,4 +9,8 @@ set laststatus=2
 set statusline=%F%r%h%=
 set cursorline
 
+set autowrite
+set hidden
+set nowrap
+
 
