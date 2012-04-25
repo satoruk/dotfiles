@@ -10,7 +10,7 @@ mkSLink () {
   src=$1
   dest=$2
   if [ -e $dest ]; then
-    read -p "$dest already exist. Overwite? [Y/n]:" ans
+    read -p "$dest already exist. Overwite? [y/N]:" ans
     case $ans in
       [Yy]* ) break;;
       * ) cancel=true;;
@@ -24,7 +24,7 @@ mkSLink () {
   fi
 }
 
-
+mkSLink "$basedir/bashrc" ~/.bashrc
 mkSLink "$basedir/gitignore" ~/.gitignore
 mkSLink "$basedir/vimrc" ~/.vimrc
 mkSLink "$basedir/vim" ~/.vim
