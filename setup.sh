@@ -4,12 +4,22 @@ basedir=$(cd $(dirname $0);pwd)
 
 #echo $basedir
 
+canonical_readlink () { 
+  cd `dirname $1`; 
+  __filename=`basename $1`; 
+  if [ -h "$__filename" ]; then 
+    canonical_readlink `readlink $__filename`; 
+  else 
+    echo "`pwd -P`/$__filename"; 
+  fi 
+}
+
 mkSLink () {
   local src dest cancel
   cancel=false
   src=$1
   dest=$2
-  if [ $(readlink -f $src) = $(readlink -f $dest) ]; then
+  if [ $(canonical_readlink $src) = $(canonical_readlink $dest) ]; then
     echo "$dest ... ok (already created)"
     return
   fi
@@ -37,7 +47,7 @@ escapeFile () {
   if [ ! -f $dest ]; then
     return
   fi
-  if [ $(readlink -f $src) = $(readlink -f $dest) ]; then
+  if [ $(canonical_readlink $src) = $(canonical_readlink $dest) ]; then
     return
   fi
   mv $dest "$dest.local"
