@@ -62,8 +62,8 @@ mkSLink "$basedir/vimrc" ~/.vimrc
 mkSLink "$basedir/vim" ~/.vim
 
 
-if type -P update-alternatives >/dev/null; then
-  if [ $(update-alternatives --query editor | grep -c "^Value: .*vim.*") -ne 1 ]; then
+if which update-alternatives >/dev/null; then
+  if [ $(update-alternatives --query editor | grep -c "^Value: .*vim.*") != 1 ]; then
     sudo update-alternatives --config editor
   fi
 fi
