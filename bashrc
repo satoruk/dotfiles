@@ -25,8 +25,15 @@ alias ll='ls --color=auto -al'
 #eval `gdircolors ~/.dir_colors -b`
 #eval `ssh-agent`
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
-[[ -s "$HOME/.nvm/nvm.sh" ]] && . "$HOME/.nvm/nvm.sh" # Load Node Version Manager(nvm) function
+# RVM
+if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
+  . "$HOME/.rvm/scripts/rvm" # Load RVM function
+  PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+fi
+
+if [[ -s "$HOME/.nvm/nvm.sh" ]]; then
+  . "$HOME/.nvm/nvm.sh" # Load Node Version Manager(nvm) function
+fi
 
 
 
