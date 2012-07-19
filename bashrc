@@ -5,17 +5,30 @@
 # Mac OS X only
 if [ `uname` = "Darwin" ]; then
   if type -P brew >/dev/null; then
-    export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
+    export PATH=$(brew --repository)/bin:$PATH
 
-    if [ -f `brew --prefix`/etc/bash_completion ]; then
-      . `brew --prefix`/etc/bash_completion
+    if [ -d $(brew --repository)/Library/LinkedKegs/gnu-tar ]; then
+      alias tar='gtar'
     fi
+
+    if [ -d $(brew --repository)/Library/LinkedKegs/coreutils ]; then
+      export PATH=$(brew --repository)/Library/LinkedKegs/coreutils/libexec/gnubin:$PATH
+    fi
+
+    if [ -f $(brew --repository)/etc/bash_completion ]; then
+      . $(brew --repository)/etc/bash_completion
+    fi
+
   fi
 fi
 
 
-GIT_PS1_SHOWDIRTYSTATE=true
-PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\W\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
+PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\W'
+if declare -f __git_ps1 > /dev/null; then
+  GIT_PS1_SHOWDIRTYSTATE=true
+  PS1=$PS1'\[\033[31m\]$(__git_ps1)'
+fi
+PS1=$PS1'\[\033[00m\]\$ '
 
 
 # RVM
