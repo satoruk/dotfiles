@@ -33,15 +33,15 @@ PS1=$PS1'\[\033[00m\]\$ '
 
 # RVM
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
-  . "$HOME/.rvm/scripts/rvm" # Load RVM function
-  PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+  . "$HOME/.rvm/scripts/rvm"
 fi
 
+# Node Version Manager(nvm)
 if [[ -s "$HOME/.nvm/nvm.sh" ]]; then
-  . "$HOME/.nvm/nvm.sh" # Load Node Version Manager(nvm) function
+  . "$HOME/.nvm/nvm.sh"
 fi
 
-
+export LESS='-R'
 alias sl='ls --color=auto'
 alias ll='ls --color=auto -al'
 alias sudo='sudo '
