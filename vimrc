@@ -12,6 +12,10 @@ set autowrite
 set hidden
 set nowrap
 
+filetype off
+call pathogen#runtime_append_all_bundles()
+filetype on
+
 
 function! GetStatusEx()
   let str = ''
