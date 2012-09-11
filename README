@@ -1,0 +1,14 @@
+
+$ git clone git://gist.github.com/2341819.git ~/.dotfile
+$ cd ~/.dotfile
+$ ./setup.sh
+
+
+
+TODO
+ - Check exist git of bash_completion on Cent OS
+
+
+
+
+
