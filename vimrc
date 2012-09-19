@@ -1,5 +1,11 @@
 
+filetype off
+"call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 syntax on
+"filetype on
+filetype plugin indent on
+
 colorscheme greens
 
 set listchars=tab:>-,trail:-,eol:$,extends:>,precedes:<,nbsp:%
@@ -11,10 +17,6 @@ set cursorline
 set autowrite
 set hidden
 set nowrap
-
-filetype off
-call pathogen#runtime_append_all_bundles()
-filetype on
 
 
 function! GetStatusEx()
@@ -36,4 +38,13 @@ function! GetStatusEx()
 endfunction
 set statusline=%<%f\ %m%r%h%w%=%{GetStatusEx()}\ \ %l,%c%V%8P
 
+hi IndentGuidesOdd  guibg=red   ctermbg=Blue
+hi IndentGuidesEven guibg=green ctermbg=DarkBlue
+
+
+set ts=2 sw=2 et
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
 
