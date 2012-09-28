@@ -61,6 +61,7 @@ mkSLink "$basedir/gitignore" ~/.gitignore
 mkSLink "$basedir/vimrc" ~/.vimrc
 mkSLink "$basedir/vim" ~/.vim
 
+git config --global core.excludesfile $HOME/.gitignore
 
 if which update-alternatives >/dev/null; then
   if [ $(update-alternatives --query editor | grep -c "^Value: .*vim.*") != 1 ]; then
