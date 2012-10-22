@@ -32,14 +32,13 @@ PS1=$PS1'\[\033[00m\]\$ '
 
 
 # RVM
-if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
-  . "$HOME/.rvm/scripts/rvm"
-fi
+[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
 # Node Version Manager(nvm)
-if [[ -s "$HOME/.nvm/nvm.sh" ]]; then
-  . "$HOME/.nvm/nvm.sh"
-fi
+[[ -s $HOME/.nvm/nvm.sh ]] && source $HOME/.nvm/nvm.sh
+
+# pythonz
+[[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
 
 export LESS='-R'
 alias sl='ls --color=auto'
