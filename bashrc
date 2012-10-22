@@ -40,6 +40,9 @@ PS1=$PS1'\[\033[00m\]\$ '
 # pythonz
 [[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
 
+# python 2.7.3
+[[ -d $HOME/.pythonz/pythons/CPython-2.7.3/bin ]] && export PATH=$HOME/.pythonz/pythons/CPython-2.7.3/bin:$PATH
+
 export LESS='-R'
 alias sl='ls --color=auto'
 alias ll='ls --color=auto -al'
