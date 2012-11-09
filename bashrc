@@ -23,13 +23,6 @@ if [ `uname` = "Darwin" ]; then
 fi
 
 
-PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\W'
-if declare -f __git_ps1 > /dev/null; then
-  GIT_PS1_SHOWDIRTYSTATE=true
-  PS1=$PS1'\[\033[31m\]$(__git_ps1)'
-fi
-PS1=$PS1'\[\033[00m\]\$ '
-
 
 # RVM
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
@@ -42,6 +35,26 @@ PS1=$PS1'\[\033[00m\]\$ '
 
 # python 2.7.3
 [[ -d $HOME/.pythonz/pythons/CPython-2.7.3/bin ]] && export PATH=$HOME/.pythonz/pythons/CPython-2.7.3/bin:$PATH
+
+
+
+PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\W'
+if declare -f __git_ps1 > /dev/null; then
+  GIT_PS1_SHOWDIRTYSTATE=true
+  PS1=$PS1'\[\033[31m\]$(__git_ps1)'
+fi
+# RVM
+if which rvm-prompt >/dev/null; then
+  __custom_ps1_rvm() {
+    local val="$(rvm-prompt)"
+    [[ -n $val ]] && echo '('$val')'
+  }
+  PS1='\[\033[0;36m\]$(__custom_ps1_rvm)'$PS1
+fi
+PS1=$PS1'\[\033[00m\]\$ '
+
+
+
 
 export LESS='-R'
 alias sl='ls --color=auto'
