@@ -51,6 +51,14 @@ if type -P rvm-prompt >/dev/null; then
   }
   PS1='\[\033[0;36m\]$(__custom_ps1_rvm)'$PS1
 fi
+# NVM
+if type nvm_version &>/dev/null; then
+  __custom_ps1_nvm() {
+    local val="$(nvm_version)"
+    [[ -n $val ]] && echo '(node '$val')'
+  }
+  PS1='\[\033[0;36m\]$(__custom_ps1_nvm)'$PS1
+fi
 PS1=$PS1'\[\033[00m\]\$ '
 
 
@@ -67,3 +75,5 @@ alias sudo='sudo '
 
 
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
