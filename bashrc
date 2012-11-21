@@ -44,7 +44,7 @@ if declare -f __git_ps1 > /dev/null; then
   PS1=$PS1'\[\033[31m\]$(__git_ps1)'
 fi
 # RVM
-if which rvm-prompt >/dev/null; then
+if type -P rvm-prompt >/dev/null; then
   __custom_ps1_rvm() {
     local val="$(rvm-prompt)"
     [[ -n $val ]] && echo '('$val')'
