@@ -49,10 +49,15 @@ function! GetStatusEx()
 endfunction
 set statusline=%<%f\ %m%r%h%w%=%{GetStatusEx()}\ \ %l,%c%V%8P
 
+hi Normal guibg=black ctermbg=black
+autocmd VimEnter,Colorscheme * :hi Normal           guibg=black ctermbg=black
+
+""""""""""""""""""""""""
+" vim-indent-guides
 hi IndentGuidesOdd  guibg=red   ctermbg=Blue
 hi IndentGuidesEven guibg=green ctermbg=DarkBlue
-
-
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 set ts=2 sw=2 et
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_enable_on_vim_startup = 1
