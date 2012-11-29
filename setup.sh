@@ -56,7 +56,7 @@ escapeFile () {
 }
 
 vimsetup () {
-  vim -u $basedir/vim/vandle.vimrc +BundleInstall +qall
+  vim -u $basedir/vim/vimrc.d/vundle.vimrc +BundleInstall +qall
 }
 
 git submodule init
