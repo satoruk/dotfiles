@@ -1,6 +1,7 @@
 #!/bin/sh
 
 basedir=$(cd $(dirname $0);pwd)
+cd $basedir
 
 #echo $basedir
 
@@ -57,6 +58,9 @@ escapeFile () {
 vimsetup () {
   vim -u $basedir/vim/vandle.vimrc +BundleInstall +qall
 }
+
+git submodule init
+git submodule update
 
 escapeFile "$basedir/bashrc" ~/.bashrc
 
