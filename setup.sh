@@ -20,7 +20,7 @@ mkSLink () {
   src=$1
   dest=$2
   if [ $(canonical_readlink $src) = $(canonical_readlink $dest) ]; then
-    echo "$dest ... ok (already created)"
+    echo "$(printf '%-30s ... ok (already created)' $dest)";
     return
   fi
   if [ -e $dest ]; then
@@ -34,9 +34,9 @@ mkSLink () {
   if ! $cancel; then
     rm -rf $dest
     ln -s -f $src $dest
-    echo "$dest ... ok"
+    echo "$(printf '%-30s ... ok' $dest)";
   else
-    echo "$dest ... skip"
+    echo "$(printf '%-30s ... skip' $dest)";
   fi
 }
 
@@ -54,12 +54,17 @@ escapeFile () {
   echo "escape $dest to .local"
 }
 
+vimsetup () {
+  vim -u $basedir/vim/vandle.vimrc +BundleInstall +qall
+}
+
 escapeFile "$basedir/bashrc" ~/.bashrc
 
 mkSLink "$basedir/bashrc" ~/.bashrc
 mkSLink "$basedir/gitignore" ~/.gitignore
 mkSLink "$basedir/vimrc" ~/.vimrc
 mkSLink "$basedir/vim" ~/.vim
+vimsetup
 
 git config --global core.excludesfile $HOME/.gitignore
 

@@ -1,12 +1,23 @@
+set nocompatible " be iMproved
+filetype off     " required!
 
-filetype off
-"call pathogen#runtime_append_all_bundles()
-call pathogen#infect()
+" Vundle
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" original repos on github
+Bundle 'gmarik/vundle'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'nathanaelkane/vim-indent-guides'
+
+" vim-scripts repos
+Bundle 'molokai'
+
 syntax on
-"filetype on
 filetype plugin indent on
 
-colorscheme greens
+set t_Co=256
+colorscheme molokai
 
 set listchars=tab:>-,trail:-,eol:$,extends:>,precedes:<,nbsp:%
 set list
@@ -50,7 +61,5 @@ let g:indent_guides_guide_size = 1
 
 
 au BufNewFile,BufRead *.ejs set filetype=html
-
-
 
 
