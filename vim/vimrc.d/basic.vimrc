@@ -49,7 +49,11 @@ let g:indent_guides_guide_size = 1
 """"""""""""""""""""""""
 " neocomplcache
 "
+"起動時に有効
 let g:neocomplcache_enable_at_startup = 1
-
+"自動補完を行う入力数を設定。初期値は2
+let g:neocomplcache_auto_completion_start_length = 2
+"手動補完時に補完を行う入力数を制御。値を小さくすると文字の削除時に重くなる
+let g:neocomplcache_manual_completion_start_length = 3
 
 
