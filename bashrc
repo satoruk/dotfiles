@@ -28,7 +28,10 @@ fi
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
 # Node Version Manager(nvm)
-[[ -s $HOME/.nvm/nvm.sh ]] && source $HOME/.nvm/nvm.sh
+if [ -s $HOME/.nvm/nvm.sh ]; then
+  source $HOME/.nvm/nvm.sh
+  source $HOME/.nvm/bash_completion
+fi
 
 # pythonz
 [[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
@@ -74,6 +77,6 @@ alias sudo='sudo '
 #eval `ssh-agent`
 
 
+PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
+PATH=./node_modules/.bin:$PATH # Add for node.js 
 
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
