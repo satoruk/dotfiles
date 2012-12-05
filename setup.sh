@@ -70,6 +70,7 @@ mkSLink "$basedir/vimrc" ~/.vimrc
 mkSLink "$basedir/vim" ~/.vim
 vimsetup
 
+git config --global color.ui true
 git config --global core.excludesfile $HOME/.gitignore
 
 if which update-alternatives >/dev/null; then
