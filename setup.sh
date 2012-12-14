@@ -72,6 +72,8 @@ vimsetup
 
 git config --global color.ui true
 git config --global core.excludesfile $HOME/.gitignore
+git config --global alias.mls 'ls-files --other --modified --exclude-standard'
+
 
 if which update-alternatives >/dev/null; then
   if [ $(update-alternatives --query editor | grep -c "^Value: .*vim.*") != 1 ]; then
