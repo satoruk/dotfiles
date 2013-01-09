@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 basedir=$(cd $(dirname $0);pwd)
 cd $basedir
@@ -70,10 +70,35 @@ mkSLink "$basedir/vimrc" ~/.vimrc
 mkSLink "$basedir/vim" ~/.vim
 vimsetup
 
+# setup git
+if [ -z $(git config --global user.name) ]; then
+  echo -en "\e[32mgit config --global user.name\e[00m > "
+  read input
+  if [ -z $input ]; then
+    echo -e "\e[33mskip\e[00m"
+  else
+    echo -e "git config --global user.name \e[32m$input\e[00m"
+    git config --global user.name $input
+  fi
+fi
+if [ -z $(git config --global user.email) ]; then
+  echo -en "\e[32mgit config --global user.email\e[00m > "
+  read input
+  if [ -z $input ]; then
+    echo -e "\e[33mskip\e[00m"
+  else
+    echo -e "git config --global user.email \e[32m$input\e[00m"
+    git config --global user.email $input
+  fi
+fi
+# use color UI
 git config --global color.ui true
+# use default git ignores
 git config --global core.excludesfile $HOME/.gitignore
+# push only current branch
+git config --global push.default current
+# aliases
 git config --global alias.mls 'ls-files --other --modified --exclude-standard'
-
 
 if which update-alternatives >/dev/null; then
   if [ $(update-alternatives --query editor | grep -c "^Value: .*vim.*") != 1 ]; then

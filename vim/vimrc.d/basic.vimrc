@@ -34,8 +34,11 @@ function! GetStatusEx()
 endfunction
 set statusline=%<%f\ %m%r%h%w%=%{GetStatusEx()}\ \ %l,%c%V%8P
 
-
+" Javascript [ejs]
 au BufNewFile,BufRead *.ejs set filetype=html
+
+" PHP
+au BufNewFile,BufRead *.php set tabstop=4 shiftwidth=4
 
 """"""""""""""""""""""""
 " vim-indent-guides
