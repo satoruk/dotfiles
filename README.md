@@ -1,10 +1,9 @@
 
-$ git clone git://gist.github.com/2341819.git ~/.dotfile
-$ cd ~/.dotfile
+$ git clone https://github.com/satoruk/dotfiles.git .dotfiles
+$ cd ~/.dotfiles
 $ git submodule init
 $ git submodule update
 $ ./setup.sh
-
 
 
 TODO
