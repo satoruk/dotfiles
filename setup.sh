@@ -63,8 +63,11 @@ git submodule init
 git submodule update
 
 escapeFile "$basedir/bashrc" ~/.bashrc
-
 mkSLink "$basedir/bashrc" ~/.bashrc
+
+escapeFile "$basedir/zshrc" ~/.zshrc
+mkSLink "$basedir/zshrc" ~/.zshrc
+
 mkSLink "$basedir/tmux.conf" ~/.tmux.conf
 mkSLink "$basedir/gitignore" ~/.gitignore
 mkSLink "$basedir/vimrc" ~/.vimrc

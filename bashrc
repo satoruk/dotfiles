@@ -16,7 +16,7 @@ if [ `uname` = "Darwin" ]; then
     fi
 
     if [ -f $(brew --repository)/etc/bash_completion ]; then
-      . $(brew --repository)/etc/bash_completion
+      source $(brew --repository)/etc/bash_completion
     fi
 
   fi
