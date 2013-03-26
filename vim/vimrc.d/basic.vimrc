@@ -11,9 +11,18 @@ set number
 set laststatus=2
 set cursorline
 
+set mouse=a
+
+set autoread
 set autowrite
 set hidden
 set nowrap
+
+" ウィンドウの移動の度に自動読み込み
+augroup vimrc-checktime
+  autocmd!
+  autocmd WinEnter * checktime
+augroup END
 
 function! GetStatusEx()
   let str = ''
