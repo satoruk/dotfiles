@@ -110,5 +110,8 @@ if which update-alternatives >/dev/null; then
   fi
 fi
 
-
+if [ `uname` = "Darwin" ]; then
+  # default save to the Documents directory on Mac OS X
+  defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
+fi
 
