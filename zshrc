@@ -1,6 +1,32 @@
 
 [[ -s "$HOME/.zshrc.local" ]] && . "$HOME/.zshrc.local" # Load local zshrc
 
+## Configration each OSs
+#
+#Mac OS X only
+if [ `uname` = "Darwin" ]; then
+  if whence -f brew >/dev/null; then
+    export PATH=$(brew --repository)/bin:$PATH
+
+    if [ -d $(brew --repository)/Library/LinkedKegs/gnu-tar ]; then
+      alias tar='gtar'
+    fi
+
+    if [ -d $(brew --repository)/Library/LinkedKegs/coreutils ]; then
+      export PATH=$(brew --repository)/Library/LinkedKegs/coreutils/libexec/gnubin:$PATH
+    fi
+
+  fi
+fi
+
+# RVM
+[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+
+# Node Version Manager(nvm)
+if [ -s $HOME/.nvm/nvm.sh ]; then
+  source $HOME/.nvm/nvm.sh
+fi
+
 ## Keybind likes Vi
 #
 bindkey -v
@@ -50,39 +76,57 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
+# vcs_info
+autoload vcs_info
+# gitのみ有効にする
+zstyle ":vcs_info:*" enable git
+# commitしていない変更をチェックする
+zstyle ":vcs_info:git:*" check-for-changes true
+# gitリポジトリに対して、変更情報とリポジトリ情報を表示する
+zstyle ":vcs_info:git:*" formats "%c%u[%b:%r]"
+# gitリポジトリに対して、コンフリクトなどの情報を表示する
+zstyle ":vcs_info:git:*" actionformats "%c%u<%a>[%b:%r]"
+# addしていない変更があることを示す文字列
+zstyle ":vcs_info:git:*" unstagedstr "<U>"
+# commitしていないstageがあることを示す文字列
+zstyle ":vcs_info:git:*" stagedstr "<S>"
 
-## Configration each OSs
-#
-#Mac OS X only
-if [ `uname` = "Darwin" ]; then
-  if whence -f brew >/dev/null; then
-    export PATH=$(brew --repository)/bin:$PATH
-
-    if [ -d $(brew --repository)/Library/LinkedKegs/gnu-tar ]; then
-      alias tar='gtar'
-    fi
-
-    if [ -d $(brew --repository)/Library/LinkedKegs/coreutils ]; then
-      export PATH=$(brew --repository)/Library/LinkedKegs/coreutils/libexec/gnubin:$PATH
-    fi
-
+: <<'#__COMMENT_OUT__'
+# git：まだpushしていないcommitあるかチェックする
+my_git_info_push () {
+  if [ "$(git remote 2>/dev/null)" != "" ]; then
+    local head="$(git rev-parse HEAD)"
+    local remote
+    for remote in $(git rev-parse --remotes) ; do
+      if [ "$head" = "$remote" ]; then return 0 ; fi
+    done
+    # pushしていないcommitがあることを示す文字列
+    echo "<P>"
   fi
-fi
+}
 
+# git：stashに退避したものがあるかチェックする
+my_git_info_stash () {
+  if [ "$(git stash list 2>/dev/null)" != "" ]; then
+    # stashがあることを示す文字列
+    echo "{s}"
+  fi
+}
 
-# RVM
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-
-# Node Version Manager(nvm)
-if [ -s $HOME/.nvm/nvm.sh ]; then
-  source $HOME/.nvm/nvm.sh
-fi
-
+# vcs_infoの出力に独自の出力を付加する
+my_vcs_info () {
+  vcs_info
+  echo $(my_git_info_stash)$(my_git_info_push)$vcs_info_msg_0_
+}
+#__COMMENT_OUT__
 
 ## Prompt
 #
-PROMPT="%{${fg[green]}%}%n@%m%{${reset_color}%}"
+# プロンプト定義の中で置換を使用する
+setopt prompt_subst
+#RPROMPT="(job:%j)"$'$(my_vcs_info)'
 RPROMPT="(job:%j)"
+PROMPT="%{${fg[green]}%}%n@%m%{${reset_color}%}"
 if [[ -z "${REMOTEHOST}${SSH_CONNECTION}" ]]; then
   #local shell
 else
@@ -91,6 +135,8 @@ else
 fi
 PROMPT=$PROMPT" %~
 %# "
+
+export LESS='--tabs=4 --no-init --LONG-PROMPT --ignore-case --RAW-CONTROL-CHARS'
 
 ## Aliases
 #

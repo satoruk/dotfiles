@@ -65,11 +65,13 @@ fi
 PS1=$PS1'\[\033[00m\]\$ '
 
 
+export _JAVA_OPTIONS='-Dfile.encoding=UTF-8'
+export LESS='--tabs=4 --no-init --LONG-PROMPT --ignore-case --RAW-CONTROL-CHARS'
+export GREP_OPTIONS='--exclude=*.swp'
 
 
-export LESS='-R'
 alias sl='ls --color=auto'
-alias ll='ls --color=auto -al'
+alias ll='ls --color=auto -alh'
 alias sudo='sudo '
 #alias java='java -Dfile.encoding=UTF-8'
 

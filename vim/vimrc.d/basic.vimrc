@@ -5,6 +5,7 @@
 syntax on
 filetype plugin indent on
 
+set fileencodings=ucs-bom,utf-8,iso-2022-jp,euc-jp,cp932,default,latin1
 set listchars=tab:>-,trail:-,eol:$,extends:>,precedes:<,nbsp:%
 set list
 set number
