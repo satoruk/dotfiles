@@ -82,3 +82,6 @@ alias sudo='sudo '
 PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
 PATH=./node_modules/.bin:$PATH # Add for node.js 
 
+
+### Added by the Heroku Toolbelt
+[[ -d /usr/local/heroku/bin ]] &&export PATH="/usr/local/heroku/bin:$PATH"
