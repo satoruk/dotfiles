@@ -11,6 +11,7 @@ set list
 set number
 set laststatus=2
 set cursorline
+set backspace=2
 
 set mouse=a
 
