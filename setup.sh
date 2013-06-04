@@ -101,8 +101,11 @@ git config --global color.ui true
 git config --global core.excludesfile $HOME/.gitignore
 # push only current branch
 git config --global push.default current
+# credential timeout
+git config --global credential.helper cache --timeout=3600
 # aliases
 git config --global alias.mls 'ls-files --other --modified --exclude-standard'
+git config --global alias.st 'st'
 
 if which update-alternatives >/dev/null; then
   if [ $(update-alternatives --query editor | grep -c "^Value: .*vim.*") != 1 ]; then
