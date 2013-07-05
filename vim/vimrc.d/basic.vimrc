@@ -6,7 +6,7 @@ syntax on
 filetype plugin indent on
 
 set fileencodings=ucs-bom,utf-8,iso-2022-jp,euc-jp,cp932,default,latin1
-set listchars=tab:>-,trail:-,eol:$,extends:>,precedes:<,nbsp:%
+set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:$
 set list
 set number
 set laststatus=2
@@ -19,6 +19,12 @@ set autoread
 set autowrite
 set hidden
 set nowrap
+
+" Disable backup and swap files
+set nowritebackup
+set nobackup
+set noswapfile
+
 
 " ウィンドウの移動の度に自動読み込み
 augroup vimrc-checktime

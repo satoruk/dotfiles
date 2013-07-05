@@ -69,11 +69,16 @@ export _JAVA_OPTIONS='-Dfile.encoding=UTF-8'
 export LESS='--tabs=4 --no-init --LONG-PROMPT --ignore-case --RAW-CONTROL-CHARS'
 export GREP_OPTIONS='--exclude=*.swp'
 
-
 alias sl='ls --color=auto'
 alias ll='ls --color=auto -alh'
 alias sudo='sudo '
 #alias java='java -Dfile.encoding=UTF-8'
+
+alias phpgrep='grep -r --include="*.php"'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
 
 #eval `gdircolors ~/.dir_colors -b`
 #eval `ssh-agent`
