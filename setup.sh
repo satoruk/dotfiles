@@ -105,7 +105,8 @@ git config --global push.default current
 git config --global credential.helper cache --timeout=3600
 # aliases
 git config --global alias.mls 'ls-files --other --modified --exclude-standard'
-git config --global alias.st 'st'
+git config --global alias.st 'status'
+git config --global alias.co 'checkout'
 
 if which update-alternatives >/dev/null; then
   if [ $(update-alternatives --query editor | grep -c "^Value: .*vim.*") != 1 ]; then
