@@ -11,6 +11,9 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Shougo/neocomplcache'
 
+" git plugin
+Bundle 'tpope/vim-fugitive'
+
 " vim-scripts repos
 Bundle 'molokai'
 "Bundle 'unite.vim'
