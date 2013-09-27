@@ -72,6 +72,7 @@ mkSLink "$basedir/tmux.conf" ~/.tmux.conf
 mkSLink "$basedir/gitignore" ~/.gitignore
 mkSLink "$basedir/vimrc" ~/.vimrc
 mkSLink "$basedir/vim" ~/.vim
+mkSLink "$basedir/ctags" ~/.ctags
 vimsetup
 
 # setup git
