@@ -10,6 +10,7 @@ Bundle 'gmarik/vundle'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Shougo/neocomplcache'
+Bundle 'elzr/vim-json'
 
 " git plugin
 Bundle 'tpope/vim-fugitive'
