@@ -6,6 +6,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " original repos on github
+Bundle 'The-NERD-tree'
 Bundle 'gmarik/vundle'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'nathanaelkane/vim-indent-guides'
