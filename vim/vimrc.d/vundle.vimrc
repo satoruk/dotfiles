@@ -13,6 +13,11 @@ Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'Shougo/neocomplcache'
 Bundle 'elzr/vim-json'
 
+" JavaScript
+" mustache js template
+Bundle 'juvenn/mustache.vim'
+
+
 " git plugin
 Bundle 'tpope/vim-fugitive'
 

@@ -51,7 +51,9 @@ function! GetStatusEx()
 endfunction
 set statusline=%<%f\ %m%r%h%w%=%{GetStatusEx()}\ \ %l,%c%V%8P
 
-" Javascript [ejs]
+" 拡張子毎の設定
+
+" Javascript
 au BufNewFile,BufRead *.ejs set filetype=html
 
 " PHP
