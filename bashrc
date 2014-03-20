@@ -20,6 +20,8 @@ if [ `uname` = "Darwin" ]; then
     fi
 
   fi
+
+  [[ -e $(/usr/libexec/java_home) ]] && export JAVA_HOME=$(/usr/libexec/java_home)
 fi
 
 
@@ -64,8 +66,23 @@ if type nvm_version &>/dev/null; then
 fi
 PS1=$PS1'\[\033[00m\]\$ '
 
+PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
+PATH=./node_modules/.bin:$PATH # Add for node.js 
 
-export _JAVA_OPTIONS='-Dfile.encoding=UTF-8'
+# Java settings
+if type -p java > /dev/null; then
+  _java=java
+elif [[ -n "$JAVA_HOME" ]] && [[ -x "$JAVA_HOME/bin/java" ]];  then
+  _java="$JAVA_HOME/bin/java"
+fi
+if [[ "$_java" ]]; then
+  version=$("$_java" -version 2>&1 | awk -F '"' '/version/ {print $2}')
+  if [[ "$version" < "1.7" ]]; then
+    # Mac OS X only
+    [[ `uname` = "Darwin" ]] && export _JAVA_OPTIONS='-Dfile.encoding=UTF-8'
+  fi
+fi
+
 export LESS='--tabs=4 --no-init --LONG-PROMPT --ignore-case --RAW-CONTROL-CHARS'
 export GREP_OPTIONS='--exclude=*.swp'
 
@@ -84,9 +101,8 @@ alias .....='cd ../../../..'
 #eval `ssh-agent`
 
 
-PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
-PATH=./node_modules/.bin:$PATH # Add for node.js 
+# Heroku
+[[ -d /usr/local/heroku/bin ]] && export PATH="/usr/local/heroku/bin:$PATH"
+# MySQL
+[[ -d /usr/local/mysql/bin ]] && export PATH="$PATH:/usr/local/mysql/bin"
 
-
-### Added by the Heroku Toolbelt
-[[ -d /usr/local/heroku/bin ]] &&export PATH="/usr/local/heroku/bin:$PATH"

@@ -60,7 +60,7 @@ vimsetup () {
 }
 
 git submodule init
-git submodule update
+git submodule update --recursive
 
 escapeFile "$basedir/bashrc" ~/.bashrc
 mkSLink "$basedir/bashrc" ~/.bashrc
@@ -73,6 +73,12 @@ mkSLink "$basedir/gitignore" ~/.gitignore
 mkSLink "$basedir/vimrc" ~/.vimrc
 mkSLink "$basedir/vim" ~/.vim
 mkSLink "$basedir/ctags" ~/.ctags
+
+if which grcat >/dev/null; then
+  mkSLink "$basedir/my.cnf" ~/.my.cnf
+  mkSLink "$basedir/grcat" ~/.grcat
+fi
+
 vimsetup
 
 # setup git
