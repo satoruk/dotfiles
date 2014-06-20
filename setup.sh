@@ -110,6 +110,7 @@ git config --global core.excludesfile $HOME/.gitignore
 git config --global push.default current
 # credential timeout
 git config --global credential.helper cache --timeout=3600
+git config --global mergetool.keepBackup false
 # aliases
 git config --global alias.mls 'ls-files --other --modified --exclude-standard'
 git config --global alias.st 'status'
