@@ -56,7 +56,7 @@ escapeFile () {
 }
 
 vimsetup () {
-  vim -u $basedir/vim/vimrc.d/vundle.vimrc +BundleInstall +qall
+  vim -u $basedir/vim/vimrc.d/vundle.vimrc +BundleInstall +qall && mv -rf $basedir/vim/bundle/vim-colors-solarized/colors/solarized.vim $basedir/vim/colors/
 }
 
 git submodule init

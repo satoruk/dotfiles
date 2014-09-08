@@ -2,27 +2,34 @@ set nocompatible " be iMproved
 filetype off     " required!
 
 " Vundle
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
 
 " original repos on github
-Bundle 'The-NERD-tree'
-Bundle 'gmarik/vundle'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'Shougo/neocomplcache'
-Bundle 'elzr/vim-json'
+Plugin 'The-NERD-tree'
+Plugin 'gmarik/vundle'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'Shougo/neocomplcache'
+Plugin 'elzr/vim-json'
 
 " JavaScript
 " mustache js template
-Bundle 'juvenn/mustache.vim'
+Plugin 'juvenn/mustache.vim'
 
 
 " git plugin
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 
 " vim-scripts repos
-Bundle 'molokai'
+"Plugin 'tomasr/molokai'
+Plugin 'altercation/vim-colors-solarized'
 "Bundle 'unite.vim'
+colorscheme solarized
+
+call vundle#end()
 
 
