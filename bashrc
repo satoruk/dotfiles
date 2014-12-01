@@ -66,8 +66,9 @@ if type nvm_version &>/dev/null; then
 fi
 PS1=$PS1'\[\033[00m\]\$ '
 
-PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
-PATH=./node_modules/.bin:$PATH # Add for node.js 
+
+export PATH=$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
+export PATH=./node_modules/.bin:$PATH # Add for node.js 
 
 # Java settings
 if type -p java > /dev/null; then
