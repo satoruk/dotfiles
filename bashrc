@@ -1,7 +1,4 @@
 
-[[ -s "$HOME/.bashrc.local" ]] && . "$HOME/.bashrc.local" # Load local bashrc
-
-
 # Mac OS X only
 if [ `uname` = "Darwin" ]; then
   if type -P brew >/dev/null; then
@@ -106,4 +103,7 @@ alias .....='cd ../../../..'
 [[ -d /usr/local/heroku/bin ]] && export PATH="/usr/local/heroku/bin:$PATH"
 # MySQL
 [[ -d /usr/local/mysql/bin ]] && export PATH="$PATH:/usr/local/mysql/bin"
+
+# Load local bashrc
+[[ -s "$HOME/.bashrc.local" ]] && . "$HOME/.bashrc.local"
 
