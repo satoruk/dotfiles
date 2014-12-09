@@ -11,12 +11,21 @@ PS1='\[\033[32m\]\u@\h\[\033[00m\]:\[\033[36m\]\W'
 
 # Git
 if declare -f __git_ps1 > /dev/null; then
+  # + change to be committed
+  # * change stage
   GIT_PS1_SHOWDIRTYSTATE=true
-  #GIT_PS1_SHOWSTASHSTATE=true
-  #GIT_PS1_SHOWUNTRACKEDFILES=true
+  # $ exist stash
+  GIT_PS1_SHOWSTASHSTATE=true
+  # % exist untracked files
+  GIT_PS1_SHOWUNTRACKEDFILES=true
+  # < the upstream has new commit to the local
+  # > the local has new commit to the upstream
   #GIT_PS1_SHOWUPSTREAM=auto
+  # u-# the upstream has new commit to the local
+  # u+# the local has new commit to the upstream
+  GIT_PS1_SHOWUPSTREAM=verbose
   function __ps_git() {
-    echo -e "\033[31m$(__git_ps1)\033[0m"
+    echo -e "\001\033[31m\002$(__git_ps1)\001\033[0m\002"
   }
 else
   function __ps_git() { true; }
@@ -26,7 +35,7 @@ fi
 if type -P rvm-prompt >/dev/null; then
   function __ps_rvm() {
     local val="$(rvm-prompt)"
-    [[ -n $val ]] && echo -e "\033[0;36m(rb ${val})\033[0m"
+    [[ -n $val ]] && echo -e "\001\033[0;36m\002(rb ${val})\001\033[0m\002"
   }
 else
   function __ps_rvm() { true; }
@@ -36,7 +45,7 @@ fi
 if type nvm_version &>/dev/null; then
   function __ps_nvm() {
     local val="$(nvm_version)"
-    [[ -n $val ]] && echo -e "\033[0;36m(node ${val})\033[0m"
+    [[ -n $val ]] && echo -e "\001\033[0;36m\002(node ${val})\001\033[0m\002"
   }
 else
   function __ps_nvm() { true; }
@@ -55,17 +64,19 @@ function __ps_facemark {
 
 function __ps_right {
   local val=" $*"
-  local v1=$[COLUMNS-$(echo -n "${val}" | perl -pe 's/\e\[?.*?[\@-~]//g' | wc -c)]
-  echo -e -n "\033[${v1}C${val}\033[0m\033[$[COLUMNS]D"
+  #local len=$[COLUMNS-$(echo -n "${val}" | perl -pe 's/\e\[?.*?[\@-~]//g' | wc -c)]
+  local len=$[COLUMNS-$(echo -n "${val}" | perl -pe 's/\001[^(\002)]*\002//g' | wc -c)]
+  echo -e -n "\001\033[${len}C\002${val}\001\033[0m\033[$[COLUMNS]D\002"
 }
 
 function __ps_all {
   local stat=$?
   local val="$*"
-  __ps_right $(__ps_git)$(__ps_rvm)$(__ps_nvm)
+  __ps_right "$(__ps_git)$(__ps_rvm)$(__ps_nvm)"
+  #echo -e -n "${val}\001\n\002"
   echo -e -n "${val}\n"
   __ps_facemark $stat
 }
 
-PS1='\[$(__ps_all "\e[32m\u@\h\033[0m:\033[36m\W\033[0m") \$\] '
+PS1='$(__ps_all "\[\e[32m\]\u@\h\[\033[0m\]:\[\033[36m\]\W\[\033[0m\]") \$ '
 
