@@ -26,6 +26,10 @@ fi
 # RVM
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
+# Rbenv
+which rbenv > /dev/null && eval "$(rbenv init -)"
+
+
 # Node Version Manager(nvm)
 if [ -s $HOME/.nvm/nvm.sh ]; then
   source $HOME/.nvm/nvm.sh
