@@ -19,6 +19,13 @@ if [ $(uname) = "Darwin" ]; then
   fi
 
   [[ -e $(/usr/libexec/java_home) ]] && export JAVA_HOME=$(/usr/libexec/java_home)
+# RedHat and CentOS
+elif [ -e "/etc/redhat-release" ]; then
+
+  git_contrib_dir=$(ls -d1 /usr/share/doc/git*/contrib 2> /dev/null | sort -r | head -n 1)
+  if [ -e "${git_contrib_dir}/completion/git-prompt.sh" ]; then
+    source "${git_contrib_dir}/completion/git-prompt.sh"
+  fi
 fi
 
 
