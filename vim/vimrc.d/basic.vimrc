@@ -13,6 +13,11 @@ set laststatus=2
 set cursorline
 set backspace=2
 
+
+" Mode line
+set modeline
+set modelines=5
+
 set mouse=a
 
 set autoread
@@ -25,6 +30,17 @@ set nowritebackup
 set nobackup
 set noswapfile
 
+" Fold
+set foldmethod=manual
+autocmd FileType ruby :set foldmethod=indent
+autocmd FileType ruby :set foldlevel=99
+autocmd FileType ruby :set foldnestmax=99
+autocmd FileType coffee :set foldmethod=indent
+autocmd FileType coffee :set foldlevel=99
+autocmd FileType coffee :set foldnestmax=99
+autocmd FileType yaml :set foldmethod=indent
+autocmd FileType yaml :set foldlevel=99
+autocmd FileType yaml :set foldnestmax=99
 
 " ウィンドウの移動の度に自動読み込み
 augroup vimrc-checktime
