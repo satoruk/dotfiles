@@ -98,7 +98,6 @@ export GREP_OPTIONS='--exclude=*.swp'
 
 
 if $(ls --version > /dev/null 2>&1); then
-  echo 'GNU ls!'
   # GNU
   # .colorrc
   #eval $(dircolors ~/.dotfile/dircolors)
@@ -108,7 +107,6 @@ if $(ls --version > /dev/null 2>&1); then
   alias sl='ls --color=auto'
   alias ll='ls --color=auto -alh'
 else
-  echo 'Not GNU ls!'
   # Other
   # BSD LSCOLORS
   # 1. directory
