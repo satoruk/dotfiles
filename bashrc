@@ -42,6 +42,8 @@ if [ -s $HOME/.nvm/nvm.sh ]; then
   source $HOME/.nvm/nvm.sh
   source $HOME/.nvm/bash_completion
 fi
+# Node Version Manager(nodebrew)
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # pythonz
 [[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
