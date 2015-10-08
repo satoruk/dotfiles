@@ -1,4 +1,5 @@
 set nocompatible " be iMproved
+filetype on
 filetype off     " required!
 
 " Vundle
