@@ -21,6 +21,9 @@ Plugin 'elzr/vim-json'
 " mustache js template
 Plugin 'juvenn/mustache.vim'
 
+" JSX
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 
 " git plugin
 Plugin 'tpope/vim-fugitive'
