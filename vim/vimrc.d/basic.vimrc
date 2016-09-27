@@ -75,6 +75,9 @@ au BufNewFile,BufRead *.ejs set filetype=html
 " PHP
 au BufNewFile,BufRead *.php set tabstop=4 shiftwidth=4
 
+" Digdag
+au BufNewFile,BufRead *.dig set filetype=yaml
+
 """"""""""""""""""""""""
 " vim-indent-guides
 "

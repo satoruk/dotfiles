@@ -1,4 +1,4 @@
-
+# Dot Files
 
 ```bash
 $ cd ~
@@ -13,6 +13,16 @@ TODO
  - Check exist git of bash_completion on Cent OS
 
 
+## For Max OS X
 
+ - HomeBrew
+
+```
+brew install bash-completion
+brew install binutils
+brew install coreutils
+brew install findutils
+brew install vim git
+```
 
 

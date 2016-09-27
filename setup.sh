@@ -116,6 +116,8 @@ git config --global mergetool.keepBackup false
 git config --global alias.mls 'ls-files --other --modified --exclude-standard'
 git config --global alias.st 'status'
 git config --global alias.co 'checkout'
+git config --global alias.fpush 'push --force-with-lease'
+
 
 if which update-alternatives >/dev/null; then
   if [ $(update-alternatives --query editor | grep -c "^Value: .*vim.*") != 1 ]; then

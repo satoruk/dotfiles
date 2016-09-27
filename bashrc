@@ -2,18 +2,10 @@
 # Mac OS X only
 if [ $(uname) = "Darwin" ]; then
   if type -P brew >/dev/null; then
-    export PATH=$(brew --repository)/bin:$PATH
+    export PATH=$(brew --prefix)/bin:$PATH
 
-    if [ -d $(brew --repository)/Library/LinkedKegs/gnu-tar ]; then
-      alias tar='gtar'
-    fi
-
-    if [ -d $(brew --repository)/Library/LinkedKegs/coreutils ]; then
-      export PATH=$(brew --repository)/Library/LinkedKegs/coreutils/libexec/gnubin:$PATH
-    fi
-
-    if [ -f $(brew --repository)/etc/bash_completion ]; then
-      source $(brew --repository)/etc/bash_completion
+    if [ -f $(brew --prefix)/etc/bash_completion ]; then
+      source $(brew --prefix)/etc/bash_completion
     fi
 
   fi
@@ -149,3 +141,4 @@ alias .....='cd ../../../..'
 # Load local bashrc
 [[ -s "$HOME/.bashrc.local" ]] && . "$HOME/.bashrc.local"
 
+source ~/.dotfiles/ps.sh
