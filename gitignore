@@ -7,4 +7,4 @@
 *.swo
 *.orig
 tags
-
+/node_modules
