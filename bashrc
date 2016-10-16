@@ -1,4 +1,3 @@
-
 # Mac OS X only
 if [ $(uname) = "Darwin" ]; then
   if type -P brew >/dev/null; then

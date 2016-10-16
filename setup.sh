@@ -69,11 +69,12 @@ mkSLink "$basedir/bashrc" ~/.bashrc
 escapeFile "$basedir/zshrc" ~/.zshrc
 mkSLink "$basedir/zshrc" ~/.zshrc
 
-mkSLink "$basedir/tmux.conf" ~/.tmux.conf
-mkSLink "$basedir/gitignore" ~/.gitignore
-mkSLink "$basedir/vimrc" ~/.vimrc
-mkSLink "$basedir/vim" ~/.vim
 mkSLink "$basedir/ctags" ~/.ctags
+mkSLink "$basedir/gitignore" ~/.gitignore
+mkSLink "$basedir/pryrc" ~/.pryrc
+mkSLink "$basedir/tmux.conf" ~/.tmux.conf
+mkSLink "$basedir/vim" ~/.vim
+mkSLink "$basedir/vimrc" ~/.vimrc
 
 if which grcat >/dev/null; then
   mkSLink "$basedir/my.cnf" ~/.my.cnf
