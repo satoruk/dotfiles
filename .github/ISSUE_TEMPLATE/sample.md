@@ -1,6 +1,6 @@
 ---
 name: Name
-about: "About
+about: "About</br>
 複数行はいける?"
 title: Title
 
