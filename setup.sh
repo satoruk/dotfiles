@@ -60,72 +60,72 @@ vimsetup () {
   vim -u $basedir/vim/vimrc.d/vundle.vimrc +BundleInstall +qall
 }
 
-git submodule init
-git submodule update --recursive
-
-escapeFile "$basedir/bashrc" ~/.bashrc
-mkSLink "$basedir/bashrc" ~/.bashrc
-
-escapeFile "$basedir/zshrc" ~/.zshrc
-mkSLink "$basedir/zshrc" ~/.zshrc
-
-mkSLink "$basedir/ctags" ~/.ctags
-mkSLink "$basedir/gitignore" ~/.gitignore
-mkSLink "$basedir/pryrc" ~/.pryrc
+# git submodule init
+# git submodule update --recursive
+# 
+# escapeFile "$basedir/bashrc" ~/.bashrc
+# mkSLink "$basedir/bashrc" ~/.bashrc
+# 
+# escapeFile "$basedir/zshrc" ~/.zshrc
+# mkSLink "$basedir/zshrc" ~/.zshrc
+# 
+# mkSLink "$basedir/ctags" ~/.ctags
+# mkSLink "$basedir/gitignore" ~/.gitignore
+# mkSLink "$basedir/pryrc" ~/.pryrc
 mkSLink "$basedir/tmux.conf" ~/.tmux.conf
-mkSLink "$basedir/vim" ~/.vim
-mkSLink "$basedir/vimrc" ~/.vimrc
-
-if which grcat >/dev/null; then
-  mkSLink "$basedir/my.cnf" ~/.my.cnf
-  mkSLink "$basedir/grcat" ~/.grcat
-fi
-
-vimsetup
-
-# setup git
-if [ -z $(git config --global user.name) ]; then
-  echo -en "\e[32mgit config --global user.name\e[00m > "
-  read input
-  if [ -z $input ]; then
-    echo -e "\e[33mskip\e[00m"
-  else
-    echo -e "git config --global user.name \e[32m$input\e[00m"
-    git config --global user.name $input
-  fi
-fi
-if [ -z $(git config --global user.email) ]; then
-  echo -en "\e[32mgit config --global user.email\e[00m > "
-  read input
-  if [ -z $input ]; then
-    echo -e "\e[33mskip\e[00m"
-  else
-    echo -e "git config --global user.email \e[32m$input\e[00m"
-    git config --global user.email $input
-  fi
-fi
-# use color UI
-git config --global color.ui true
-# use default git ignores
-git config --global core.excludesfile $HOME/.gitignore
-# push only current branch
-git config --global push.default current
-# credential timeout
-git config --global credential.helper cache --timeout=3600
-git config --global mergetool.keepBackup false
-# aliases
-git config --global alias.mls 'ls-files --other --modified --exclude-standard'
-git config --global alias.st 'status'
-git config --global alias.co 'checkout'
-git config --global alias.fpush 'push --force-with-lease'
-
-
-if which update-alternatives >/dev/null; then
-  if [ $(update-alternatives --query editor | grep -c "^Value: .*vim.*") != 1 ]; then
-    sudo update-alternatives --config editor
-  fi
-fi
-
+# mkSLink "$basedir/vim" ~/.vim
+# mkSLink "$basedir/vimrc" ~/.vimrc
+# 
+# if which grcat >/dev/null; then
+#   mkSLink "$basedir/my.cnf" ~/.my.cnf
+#   mkSLink "$basedir/grcat" ~/.grcat
+# fi
+# 
+# vimsetup
+# 
+# # setup git
+# if [ -z $(git config --global user.name) ]; then
+#   echo -en "\e[32mgit config --global user.name\e[00m > "
+#   read input
+#   if [ -z $input ]; then
+#     echo -e "\e[33mskip\e[00m"
+#   else
+#     echo -e "git config --global user.name \e[32m$input\e[00m"
+#     git config --global user.name $input
+#   fi
+# fi
+# if [ -z $(git config --global user.email) ]; then
+#   echo -en "\e[32mgit config --global user.email\e[00m > "
+#   read input
+#   if [ -z $input ]; then
+#     echo -e "\e[33mskip\e[00m"
+#   else
+#     echo -e "git config --global user.email \e[32m$input\e[00m"
+#     git config --global user.email $input
+#   fi
+# fi
+# # use color UI
+# git config --global color.ui true
+# # use default git ignores
+# git config --global core.excludesfile $HOME/.gitignore
+# # push only current branch
+# git config --global push.default current
+# # credential timeout
+# git config --global credential.helper cache --timeout=3600
+# git config --global mergetool.keepBackup false
+# # aliases
+# git config --global alias.mls 'ls-files --other --modified --exclude-standard'
+# git config --global alias.st 'status'
+# git config --global alias.co 'checkout'
+# git config --global alias.fpush 'push --force-with-lease'
+# 
+# 
+# if which update-alternatives >/dev/null; then
+#   if [ $(update-alternatives --query editor | grep -c "^Value: .*vim.*") != 1 ]; then
+#     sudo update-alternatives --config editor
+#   fi
+# fi
+# 
 if [ `uname` = "Darwin" ]; then
   # default save to the Documents directory on Mac OS X
   defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
