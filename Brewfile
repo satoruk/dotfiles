@@ -15,6 +15,7 @@ tap "homebrew/cask-fonts"
 tap "homebrew/core"
 
 brew "anyenv"
+brew "awscli"
 brew "gh"
 brew "git"
 brew "hadolint"
@@ -25,7 +26,6 @@ brew "shellcheck"
 brew "tfenv"
 brew "tig"
 brew "tmux"
-brew "awscli"
 brew "vim"
 
 cask "1password"
@@ -40,6 +40,7 @@ cask "google-chrome"
 cask "iterm2"
 cask "slack"
 cask "visual-studio-code"
+cask "warp"
 cask "zoom"
 
 if target_creator

@@ -1,5 +1,5 @@
+!/vim/bundle/Vundle.vim
 /vim/.netrwhist
 /vim/bundle/*
 /vim/colors/*.vim
-!/vim/bundle/Vundle.vim
-
+Brewfile.lock.json
